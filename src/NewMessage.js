@@ -16,13 +16,14 @@ class NewMessage extends Component {
   handleNewMsg = (event) => {
     event.preventDefault();
     this.props.handleNewMsg(this.state.newMessage);
+    this.state.newMessage = "";
   }
 
   render() {
 	const {newMessage} = this.state;
     return (
       <form className="input-group" onSubmit={this.handleNewMsg}>
-          <input type="text" className="form-control" placeholder="Enter your message..." 
+          <input type="text" value={this.state.newMessage} className="form-control" placeholder="Enter your message..." 
     		onChange={(event) => this.handleChange(event)} />
           <div className="input-group-append">
           	<button className="btn submit-button" disabled={newMessage === ''}>
